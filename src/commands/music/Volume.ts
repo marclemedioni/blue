@@ -1,4 +1,4 @@
-import { Command, Message, CommandDecorators, Middleware } from "yamdbf";
+import { Command, Message, CommandDecorators, Middleware, MiddlewareFunction } from "yamdbf";
 import { Queue } from "../../structures/music/discord/Queue";
 import { Bot } from '../../bot'
 import { MusicVideo } from "../../structures/music/youtube/MusicVideo";
@@ -22,8 +22,13 @@ export class VolumeCommand extends Command<Bot> {
 	@validate
 	@using(resolve({ "<number|+|-|=|earrape>": "String" }))
 	@using(expect({ "<number|+|-|=|earrape>": "String" }))
-	@using(function (message: Message, [input]: [string]) {
-		let queue: Queue = this.client.music.queues.get(message.guild.id);
+	@using(function (this: Command<Bot>, message: Message, [input]: string[]) {
+    let queue: Queue | undefined = this.client.music.queues.get(message.guild.id);
+    
+    if (!queue) {
+      return [message, []];
+    }
+
 		let current: number = queue.dispatcher.volume;
 		let volume: number = parseInt(input);
 		if (isNaN(volume)) {
@@ -37,9 +42,13 @@ export class VolumeCommand extends Command<Bot> {
 		}
 		if (volume < 1) throw "Volume too low";
 		return [message, [volume]];
-	})
+  })
 	public async action(message: Message, [volume]: [number]): Promise<any> {
-		const queue: Queue = this.client.music.queues.get(message.guild.id);
+    const queue: Queue | undefined = this.client.music.queues.get(message.guild.id);
+    
+    if (!queue) {
+      return;
+    }
 
 		try {
 			queue.dispatcher.setVolumeLogarithmic(volume / 10);

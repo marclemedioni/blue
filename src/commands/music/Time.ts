@@ -18,7 +18,12 @@ export class TimeCommand extends Command<Bot> {
 
 	@validate
 	public async action(message: Message): Promise<any> {
-		const queue: Queue = this.client.music.queues.get(message.guild.id);
+    const queue: Queue | undefined = this.client.music.queues.get(message.guild.id);
+    
+    if (!queue) {
+      return;
+    }
+
 		const video: MusicVideo = queue.videos[0];
 		const time: number = Math.round(queue.dispatcher.time / 1000 + video.start);
 		const timeLeft: string = MusicVideo.formatDuration(video.duration - time);

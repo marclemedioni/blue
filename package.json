@@ -1,6 +1,6 @@
 {
   "name": "blue-discord",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Blue bot for discord",
   "main": "index.js",
   "engines": {

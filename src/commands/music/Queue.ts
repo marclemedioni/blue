@@ -19,7 +19,12 @@ export class QueueCommand extends Command<Bot> {
 
 	@validate
 	public async action(message: Message): Promise<any> {
-		const queue: Queue = this.client.music.queues.get(message.guild.id);
+    const queue: Queue | undefined = this.client.music.queues.get(message.guild.id);
+    
+    if (!queue) {
+      return;
+    }
+    
 		const list: string = queue.videos.map((v: MusicVideo, i: number) => {
 			return `**${i + 1}.** ${Util.escapeMarkdown(v.title)}`;
 		}).join("\n");

@@ -64,8 +64,11 @@ export class YouTube {
     try {
       const url: URL = new URL(unknown);
       if (["www.youtube.com", "youtube.com"].includes(url.hostname)) {
-        if (url.searchParams.get('v')) return [await this.getVideo(url.searchParams.get('v'))];
-			  if (url.searchParams.get('list')) return await this.getPlaylist(url.searchParams.get('list'));
+        let v = url.searchParams.get('v');
+        let list = url.searchParams.get('list');
+        
+        if (v) return [await this.getVideo(v)];
+			  if (list) return await this.getPlaylist(list);
       }
     }
     catch (e) {

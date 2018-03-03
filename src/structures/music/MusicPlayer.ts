@@ -9,7 +9,7 @@ import { Bot as Client } from "../../bot";
 import * as ytdl from "ytdl-core";
 
 export class MusicPlayer {
-	@logger private readonly _logger: Logger;
+  private readonly _logger: Logger = Logger.instance();
 
 	public api: { youtube: YouTube };
 	public queues: Collection<string, Queue>;

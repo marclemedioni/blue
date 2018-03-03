@@ -18,7 +18,12 @@ export class StopCommand extends Command<Bot> {
 
 	@validate
 	public async action(message: Message): Promise<any> {
-		const queue: Queue = this.client.music.queues.get(message.guild.id);
+    const queue: Queue | undefined = this.client.music.queues.get(message.guild.id);
+    
+    if (!queue) {
+      return;
+    }
+
 		const amount: number = queue.voice.members.size;
 		const voter: GuildMember = message.member;
 

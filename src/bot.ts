@@ -21,6 +21,7 @@ export class Bot extends Client {
 
   public constructor() {
     super({
+      owner: ['138403669170323456', '232940788785348609'],
       token: DISCORD_TOKEN,
       unknownCommandError: true,
       statusText: 'Optimal.',

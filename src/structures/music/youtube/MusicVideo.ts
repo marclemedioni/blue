@@ -21,11 +21,13 @@ export class MusicVideo {
 	public get duration(): number {
 		let totalSeconds: number = 0;
 		if (MusicVideo.durationRegex.test(this.durationISO8601)) {
-			const matches = MusicVideo.durationRegex.exec(this.durationISO8601);
-			let hours: number = matches[1] ? Number(matches[1]) : 0;
-			let minutes: number = matches[2] ? Number(matches[2]) : 0;
-			let seconds: number = matches[3] ? Number(matches[3]) : 0;
-			totalSeconds = hours * 3600  + minutes * 60 + seconds;
+      const matches = MusicVideo.durationRegex.exec(this.durationISO8601);
+      if (matches) {
+        let hours: number = matches[1] ? Number(matches[1]) : 0;
+        let minutes: number = matches[2] ? Number(matches[2]) : 0;
+        let seconds: number = matches[3] ? Number(matches[3]) : 0;
+        totalSeconds = hours * 3600  + minutes * 60 + seconds;
+      }
 		}
 		return totalSeconds;
 	}

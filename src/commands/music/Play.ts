@@ -32,7 +32,7 @@ export class PlayCommand extends Command<Bot> {
 	public async action(message: Message, [query]: [string]): Promise<any> {
 		const music: MusicPlayer = this.client.music;
 
-		let queue: Queue = music.queues.get(message.guild.id);
+		let queue: Queue | undefined = music.queues.get(message.guild.id);
 		if (!queue) {
 			const voice: VoiceChannel = message.member.voiceChannel;
 			if (!voice) {

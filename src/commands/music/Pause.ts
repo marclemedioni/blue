@@ -18,7 +18,11 @@ export class PauseCommand extends Command<Bot> {
 
 	@validate
 	public async action(message: Message): Promise<any> {
-		const queue: Queue = this.client.music.queues.get(message.guild.id);
+    const queue: Queue | undefined = this.client.music.queues.get(message.guild.id);
+    
+    if (!queue) {
+      return;
+    }
 
 		if (!queue.dispatcher.paused) {
 			try {

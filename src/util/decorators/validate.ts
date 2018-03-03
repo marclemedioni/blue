@@ -1,11 +1,12 @@
-import { Message } from "yamdbf";
+import { Command, Message } from "yamdbf";
 import { Queue } from "../../structures/music/discord/Queue";
+import { Bot } from "../../bot";
 
 export function validate(proto: any, key: string, descriptor: PropertyDescriptor): PropertyDescriptor {
 	if (key !== "action") throw new Error("Wrong method mate");
 	const original: Function = descriptor.value;
-	descriptor.value = function(message: Message, ...args: any[]) {
-		const queue: Queue = this.client.music.queues.get(message.guild.id);
+	descriptor.value = function(this: Command<Bot>, message: Message, ...args: any[]) {
+		const queue: Queue | undefined = this.client.music.queues.get(message.guild.id);
 		if (!queue) {
 			return message.channel.send("There is no queue.");
 		} else if (!queue.connection) {

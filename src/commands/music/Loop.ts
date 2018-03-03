@@ -17,7 +17,12 @@ export class LoopCommand extends Command<Bot> {
 
 	@validate
 	public async action(message: Message): Promise<any> {
-		const queue: Queue = this.client.music.queues.get(message.guild.id);
+    const queue: Queue | undefined = this.client.music.queues.get(message.guild.id);
+
+    if (!queue) {
+      return;
+    }
+
 		if (queue.loop) {
 			message.channel.send("No longer looping.");
 		} else {

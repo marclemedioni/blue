@@ -46,10 +46,10 @@ export class Queue {
 	}
 
 	public get connection(): VoiceConnection {
-		return this.guild.voiceConnection ? this.guild.voiceConnection : null;
+		return this.guild.voiceConnection;
 	}
 
 	public get dispatcher(): StreamDispatcher {
-		return this.connection ? this.connection.dispatcher : null;
+		return this.connection.dispatcher;
 	}
 }

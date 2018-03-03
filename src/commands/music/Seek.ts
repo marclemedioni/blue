@@ -24,18 +24,26 @@ export class SeekCommand extends Command<Bot> {
 	@using(resolve({ "<time>": "String" }))
 	@using(expect({ "<time>": "String" }))
 	public async action(message: Message, [time]: [string]): Promise<any> {
-		const queue: Queue = this.client.music.queues.get(message.guild.id);
+    const queue: Queue | undefined = this.client.music.queues.get(message.guild.id);
+    
+    if (!queue) {
+      return;
+    }
+
 		const video: MusicVideo = queue.videos[0];
 
 		let duration: number = 0;
 		if (/^\d+(?:\.\d+)?(?:s(?:ecs?)?|m(?:ins?)?|h(?:rs?|ours?)?|d(?:ays?)?)$/.test(time)) {
-			const match: RegExpMatchArray = time.match(/^(\d+(?:\.\d+)?)(s|m|h|d)/);
-			duration = parseFloat(match[1]);
-			duration = match[2] === "s"
-				? duration : match[2] === "m"
-				? duration * 60 : match[2] === "h"
-				? duration * 60 * 60 : match[2] === "d"
-				? duration * 60 * 60 * 24 : 0;
+      const match: RegExpMatchArray | null = time.match(/^(\d+(?:\.\d+)?)(s|m|h|d)/);
+      
+      if (match) {
+        duration = parseFloat(match[1]);
+        duration = match[2] === "s"
+          ? duration : match[2] === "m"
+          ? duration * 60 : match[2] === "h"
+          ? duration * 60 * 60 : match[2] === "d"
+          ? duration * 60 * 60 * 24 : 0;
+      }
 		} else if (!isNaN(parseFloat(time))) {
 			duration = parseFloat(time);
 		}
