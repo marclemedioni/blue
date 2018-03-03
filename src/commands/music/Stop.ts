@@ -1,10 +1,10 @@
 import { Command, Message } from "yamdbf";
 import { GuildMember } from "discord.js";
 import { Queue } from "../../structures/music/discord/Queue";
-import { AmpClient } from "../../structures/Client";
+import { Bot } from '../../bot'
 import { validate } from "../../util/decorators/validate";
 
-export class StopCommand extends Command<AmpClient> {
+export class StopCommand extends Command<Bot> {
 	public constructor() {
 		super({
 			name: "stop",

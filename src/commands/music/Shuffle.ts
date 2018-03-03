@@ -1,9 +1,9 @@
 import { Command, Message } from "yamdbf";
 import { Queue } from "../../structures/music/discord/Queue";
-import { AmpClient } from "../../structures/Client";
+import { Bot } from '../../bot'
 import { validate } from "../../util/decorators/validate";
 
-export class ShuffleCommand extends Command<AmpClient> {
+export class ShuffleCommand extends Command<Bot> {
 	public constructor() {
 		super({
 			name: "shuffle",

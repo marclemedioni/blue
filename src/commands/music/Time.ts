@@ -1,10 +1,10 @@
 import { Command, Message } from "yamdbf";
 import { Queue } from "../../structures/music/discord/Queue";
-import { AmpClient } from "../../structures/Client";
+import { Bot } from '../../bot'
 import { MusicVideo } from "../../structures/music/youtube/MusicVideo";
 import { validate } from "../../util/decorators/validate";
 
-export class TimeCommand extends Command<AmpClient> {
+export class TimeCommand extends Command<Bot> {
 	public constructor() {
 		super({
 			name: "time",

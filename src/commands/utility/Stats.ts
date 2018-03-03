@@ -1,7 +1,7 @@
 import { Command, Message } from "yamdbf";
-import { AmpClient } from "../../structures/Client";
+import { Bot } from '../../bot'
 
-export class StatsCommand extends Command<AmpClient> {
+export class StatsCommand extends Command<Bot> {
 	public constructor() {
 		super({
 			name: "stats",

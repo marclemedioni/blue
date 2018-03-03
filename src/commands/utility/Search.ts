@@ -1,12 +1,12 @@
 import { Command, Message, CommandDecorators, Middleware } from "yamdbf";
 import { RichEmbed } from "discord.js";
-import { AmpClient } from "../../structures/Client";
+import { Bot } from '../../bot'
 import { MusicVideo } from "../../structures/music/youtube/MusicVideo";
 
 const { using } = CommandDecorators;
 const { expect, resolve } = Middleware;
 
-export class SearchCommand extends Command<AmpClient> {
+export class SearchCommand extends Command<Bot> {
 	public constructor() {
 		super({
 			name: "search",

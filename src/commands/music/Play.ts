@@ -1,14 +1,14 @@
 import { Command, CommandDecorators, Middleware, Message } from "yamdbf";
 import { VoiceChannel, TextChannel } from "discord.js";
 import { Queue } from "../../structures/music/discord/Queue";
-import { AmpClient } from "../../structures/Client";
+import { Bot } from '../../bot'
 import { MusicPlayer } from "../../structures/music/MusicPlayer";
 import { MusicVideo } from "../../structures/music/youtube/MusicVideo";
 
 const { using } = CommandDecorators;
 const { expect, resolve } = Middleware;
 
-export class PlayCommand extends Command<AmpClient> {
+export class PlayCommand extends Command<Bot> {
 	public constructor() {
 		super({
 			name: "play",
