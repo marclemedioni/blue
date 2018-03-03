@@ -41,7 +41,7 @@ export class Bot extends Client {
     });
 
     this.keys = {
-      google: process.env.GOOGLE || keys.GOOGLE
+      google: process.env.GOOGLE_API_KEY || keys.GOOGLE
 		};
     this.music = new MusicPlayer(this);
   }
