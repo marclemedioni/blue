@@ -1,14 +1,8 @@
 import { Client, Command, Message, Time } from 'yamdbf';
 import { RichEmbed, Guild } from 'discord.js';
 import * as cheerio from 'cheerio';
-import * as request from 'request'
-
-const { version } = require('../../../package');
-let html:any
-let vdm: any
-let $:   any
-let $2:  any
-let img: string
+import * as request from 'request';
+import * as snekfetch from "snekfetch";
 
 const enum EmbedCode {
   'Default' = 0x000000,
@@ -17,47 +11,32 @@ const enum EmbedCode {
   'Info' = 0x2ECC71,
   'Profile' = 0x9B59B6
 }
-
-
 export default class extends Command<Client> {
-    public constructor() {
-        super({
-            name: 'vdm',
-            aliases: ['vdm'],
-            desc: 'Quote VDM',
-            usage: '<prefix>vdm',
-            group: 'vdm',
-            guildOnly: false
-        });
-    }
+  public constructor() {
+    super({
+      name: 'vdm',
+      aliases: ['vdm'],
+      desc: 'Quote VDM',
+      usage: '<prefix>vdm',
+      group: 'vdm',
+      guildOnly: false
+    });
+  }
 
+  public async action(message: Message) {
+    const res: snekfetch.Result = await snekfetch.get('http://www.viedemerde.fr/aleatoire').end();
+    const body = res.body.toString();
 
-    public action(message: Message) {
-        request({
-            method: 'GET',
-            url: 'http://www.viedemerde.fr/aleatoire'
-        }, function(err, response, body) {
-            if (err) return console.error(err);
-                $ = cheerio.load(body)
-                vdm = $('p').children().first().text()
-                html =$('figure.visible-xs').first().text().trim()
-                $2 = cheerio.load(html)
-                img = $2('img').attr('data-src')
-                const embed: RichEmbed = new RichEmbed()
-                .setColor(EmbedCode.Profile)
-                .setDescription(vdm)
-                .setThumbnail('http://www.betacie.com/img/logo-vdm.png')
-                .setImage(img)
-                message.channel.send({ embed });
-
-        });
-        
-       
-            
-            
-
-        
-        
-        
-    }
+    const $ = cheerio.load(body);
+    const vdm = $('p').children().first().text()
+    const firstVDMarticle = $('article').first();
+    const text = firstVDMarticle.find('.panel-content p a').text();
+    const img = firstVDMarticle.find('figure a img').attr('data-src');
+    const embed: RichEmbed = new RichEmbed()
+      .setColor(EmbedCode.Profile)
+      .setDescription(vdm)
+      .setThumbnail('http://www.betacie.com/img/logo-vdm.png')
+      .setImage(img)
+    message.channel.send({ embed });
+  }
 }
