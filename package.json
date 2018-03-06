@@ -24,7 +24,6 @@
     "dotenv-safe": "^5.0.1",
     "ffmpeg-binaries": "^3.2.2-3",
     "node-opus": "^0.2.7",
-    "request": "^2.83.0",
     "snekfetch": "^4.0.0-beta.0",
     "typescript": "^2.7.2",
     "yamdbf": "^3.0.1",
