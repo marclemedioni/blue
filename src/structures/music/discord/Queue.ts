@@ -12,7 +12,8 @@ import { MusicVideo } from "../youtube/MusicVideo";
 export class Queue {
 	public videos: MusicVideo[];
 	public voters: Snowflake[];
-	public loop: boolean;
+  public loop: boolean;
+  public volume: number;
 	public readonly text: TextChannel;
 	public readonly voice: VoiceChannel;
 
@@ -21,7 +22,8 @@ export class Queue {
 		this.voters = [];
 		this.loop = false;
 		this.text = data.text;
-		this.voice = data.voice;
+    this.voice = data.voice;
+    this.volume = 0.02;
 	}
 
 	public shuffle(): void {

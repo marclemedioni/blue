@@ -51,7 +51,8 @@ export class VolumeCommand extends Command<Bot> {
     }
 
 		try {
-			queue.dispatcher.setVolumeLogarithmic(volume / 10);
+      queue.dispatcher.setVolumeLogarithmic(volume / 10);
+      queue.volume = queue.dispatcher.volume;
 		} catch (err) {
 			return message.channel.send("Couldn't change the volume.");
 		}

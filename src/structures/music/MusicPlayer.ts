@@ -65,7 +65,7 @@ export class MusicPlayer {
 		const options: StreamOptions = {
 			passes: 5,
 			seek: video.start,
-			volume: queue.dispatcher ? queue.dispatcher.volume : 0.05
+			volume: queue.volume
 		};
 		const dispatcher: StreamDispatcher = queue.connection.playStream(stream, options)
 			.once("start", () => {
