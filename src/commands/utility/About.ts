@@ -17,8 +17,8 @@ export default class extends Command<Client> {
             name: 'about',
             aliases: ['info'],
             desc: 'About Blue',
-            usage: '[prefix]info',
-            group: 'utils',
+            usage: '<prefix>about',
+            group: 'utility',
             guildOnly: true
         });
     }
