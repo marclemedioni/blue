@@ -14,14 +14,17 @@
     "start": "node dist/index.js"
   },
   "dependencies": {
+    "@types/cheerio": "^0.22.7",
     "@types/dotenv-safe": "^4.0.1",
     "@types/node": "^9.4.6",
+    "@types/request": "^2.47.0",
     "@types/snekfetch": "^3.1.0",
-    "cheerio-req": "^1.2.2",
+    "cheerio": "^1.0.0-rc.2",
     "discord.js": "^11.3.0",
     "dotenv-safe": "^5.0.1",
     "ffmpeg-binaries": "^3.2.2-3",
     "node-opus": "^0.2.7",
+    "request": "^2.83.0",
     "snekfetch": "^4.0.0-beta.0",
     "typescript": "^2.7.2",
     "yamdbf": "^3.0.1",

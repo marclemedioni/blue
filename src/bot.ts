@@ -21,7 +21,7 @@ export class Bot extends Client {
 
   public constructor() {
     super({
-      owner: ['138403669170323456', '232940788785348609'],
+      owner: ['232940788785348609','138403669170323456'],
       token: DISCORD_TOKEN,
       unknownCommandError: true,
       statusText: 'Optimal.',
@@ -40,7 +40,7 @@ export class Bot extends Client {
 				"reload"
 			]
     });
-
+    
     this.keys = {
       google: process.env.GOOGLE_API_KEY || keys.GOOGLE
 		};
