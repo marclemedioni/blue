@@ -8,9 +8,9 @@
     "npm": "*"
   },
   "scripts": {
-    "tsc:watch": "tsc -p . -w",
+    "watch": "rimraf dist && tsc -p . -w",
     "dev": "nodemon --inspect --watch dist/ -d 1 ./dist",
-    "build": "tsc -p .",
+    "build": "rimraf dist && tsc -p .",
     "start": "node dist/index.js"
   },
   "dependencies": {
@@ -24,6 +24,7 @@
     "dotenv-safe": "^5.0.1",
     "ffmpeg-binaries": "^3.2.2-3",
     "node-opus": "^0.2.7",
+    "rimraf": "^2.6.2",
     "snekfetch": "^4.0.0-beta.0",
     "typescript": "^2.7.2",
     "yamdbf": "^3.0.1",
