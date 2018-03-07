@@ -10,7 +10,7 @@ enum embedCode {
   'Default' = 0x000000,
   'Error' = 0xE74C3C,
   'Warn' = 0xE67E22,
-  'Info' = 0x2ECC71,
+  'Info' = 0x007EFF,
   'Profile' = 0x9B59B6
 };
 

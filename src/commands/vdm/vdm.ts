@@ -24,7 +24,7 @@ export default class extends Command<Bot> {
     const text = firstVDMarticle.find('.panel-content p a').text();
     const img = firstVDMarticle.find('figure a img').attr('data-src');
     const embed: RichEmbed = new RichEmbed()
-      .setColor(this.client.embedCode.Profile)
+      .setColor(this.client.embedCode.Info)
       .setThumbnail('http://www.betacie.com/img/logo-vdm.png')
       .setImage(img)
     message.channel.send({ embed });
