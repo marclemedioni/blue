@@ -1,17 +1,10 @@
-import { Client, Command, Message, Time } from 'yamdbf';
+import { Command, Message, Time } from 'yamdbf';
 import { RichEmbed, Guild } from 'discord.js';
+import { Bot } from '../../bot';
 
 const { version } = require('../../../package');
 
-const enum EmbedCode {
-  'Default' = 0x000000,
-  'Error' = 0xE74C3C,
-  'Warn' = 0xE67E22,
-  'Info' = 0x2ECC71,
-  'Profile' = 0x9B59B6
-}
-
-export default class extends Command<Client> {
+export default class extends Command<Bot> {
     public constructor() {
         super({
             name: 'about',
@@ -26,7 +19,7 @@ export default class extends Command<Client> {
     public action(message: Message): void {
         const embed: RichEmbed = new RichEmbed()
             .setAuthor('Blue', this.client.user.avatarURL)
-            .setColor(EmbedCode.Profile)
+            .setColor(this.client.embedCode.Profile)
             .setDescription(`I master! I'm Blue v${version} ready to serve you!`)
             .addField('Servers', this.client.guilds.size.toString(), true)
             .addField('Channels', this.client.channels.size.toString(), true)

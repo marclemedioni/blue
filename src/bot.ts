@@ -6,18 +6,20 @@ import { MusicPlayer } from "./structures/music/MusicPlayer";
 const { once } = ListenerUtil;
 const { DISCORD_TOKEN } = process.env;
 
-let keys: any = {};
-try {
-	keys = require("../keys.json");
-} catch (err) {
-	keys = {};
-}
+enum embedCode {
+  'Default' = 0x000000,
+  'Error' = 0xE74C3C,
+  'Warn' = 0xE67E22,
+  'Info' = 0x2ECC71,
+  'Profile' = 0x9B59B6
+};
 
 export class Bot extends Client {
 
   private readonly logger: Logger = Logger.instance();
   public readonly music: MusicPlayer;
-	public readonly keys: any;
+  public readonly keys: any;
+  public readonly embedCode = embedCode;
 
   public constructor() {
     super({
@@ -42,9 +44,10 @@ export class Bot extends Client {
     });
     
     this.keys = {
-      google: process.env.GOOGLE_API_KEY || keys.GOOGLE
+      google: process.env.GOOGLE_API_KEY
 		};
     this.music = new MusicPlayer(this);
+    this.embedCode = embedCode;
   }
 
   @once('pause')
