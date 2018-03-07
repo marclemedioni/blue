@@ -2,6 +2,7 @@ import * as path from 'path';
 import { Client, LogLevel, Logger, ListenerUtil } from 'yamdbf';
 
 import { MusicPlayer } from "./structures/music/MusicPlayer";
+import { RssEngine } from "./structures/rss/RssEngine";
 
 const { once } = ListenerUtil;
 const { DISCORD_TOKEN } = process.env;
@@ -18,6 +19,7 @@ export class Bot extends Client {
 
   private readonly logger: Logger = Logger.instance();
   public readonly music: MusicPlayer;
+  public rss: RssEngine;
   public readonly keys: any;
   public readonly embedCode = embedCode;
 
@@ -48,6 +50,7 @@ export class Bot extends Client {
 		};
     this.music = new MusicPlayer(this);
     this.embedCode = embedCode;
+    this.rss = new RssEngine(this);
   }
 
   @once('pause')
@@ -55,4 +58,10 @@ export class Bot extends Client {
     await this.setDefaultSetting('prefix', '!');
     this.emit('continue');
   }
+
+  @once('clientReady')
+	private async _onClientReady(): Promise<void>
+	{
+		this.rss.init();
+	}
 }

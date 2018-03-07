@@ -2,7 +2,7 @@ import { EventEmitter } from "events";
 import { YouTube } from "./youtube/YouTube";
 import { MusicVideo } from "./youtube/MusicVideo";
 import { Queue } from "./discord/Queue";
-import { Logger, logger } from "yamdbf";
+import { Logger } from "yamdbf";
 import { StreamDispatcher, StreamOptions, Collection } from "discord.js";
 import { Readable } from "stream";
 import { Bot as Client } from "../../bot";
