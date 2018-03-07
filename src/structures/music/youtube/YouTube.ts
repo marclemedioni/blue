@@ -32,7 +32,7 @@ export class YouTube {
 				part: "snippet",
 				key: this._key,
 				playlistId: id,
-				maxResults: "25"
+				maxResults: "100"
 			}
     });
 		const data: any = (res.body as any).items || [];
