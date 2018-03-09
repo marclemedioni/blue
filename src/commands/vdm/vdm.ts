@@ -17,7 +17,6 @@ export default class extends Command<Bot> {
   }
 
   public async action(message: Message) {
-    console.log(info)
     const res: snekfetch.Result = await snekfetch.get('http://www.viedemerde.fr/aleatoire').end();
     const body = res.body.toString();
     const $ = cheerio.load(body);
