@@ -1,8 +1,7 @@
 import { Command, Message, Time } from 'yamdbf';
 import { RichEmbed, Guild } from 'discord.js';
+import  info  from '../../structures/constante'
 import { Bot } from '../../bot';
-
-const { version } = require('../../../package');
 
 export default class extends Command<Bot> {
     public constructor() {
@@ -18,9 +17,9 @@ export default class extends Command<Bot> {
 
     public action(message: Message): void {
         const embed: RichEmbed = new RichEmbed()
-            .setAuthor('Blue', this.client.user.avatarURL)
+            .setAuthor(this.client.user.username, this.client.user.avatarURL)
             .setColor(this.client.embedCode.Profile)
-            .setDescription(`I master! I'm Blue v${version} ready to serve you!`)
+            .setDescription(`I master! I'm ${this.client.user.username} v${info.VERSION} ready to serve you!`)
             .addField('Servers', this.client.guilds.size.toString(), true)
             .addField('Channels', this.client.channels.size.toString(), true)
             .addField('Users', this.client.guilds.map((guild: Guild) => guild.memberCount)
