@@ -23,7 +23,7 @@ export class Queue {
 		this.loop = false;
 		this.text = data.text;
     this.voice = data.voice;
-    this.volume = 0.02;
+    this.volume = 0.08;
 	}
 
 	public shuffle(): void {
