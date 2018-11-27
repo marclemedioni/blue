@@ -63,9 +63,10 @@ export class MusicPlayer {
 				this._logger.error("MusicPlayer", `Stream error: ${err.message}`);
 			});
 		const options: StreamOptions = {
-			passes: 5,
+			passes: 1,
 			seek: video.start,
-			volume: queue.volume
+      volume: queue.volume,
+      bitrate: 'auto'
 		};
 		const dispatcher: StreamDispatcher = queue.connection.playStream(stream, options)
 			.once("start", () => {
