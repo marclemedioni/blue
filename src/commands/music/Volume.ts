@@ -40,7 +40,8 @@ export class VolumeCommand extends Command<Bot> {
 				volume = 1;
 			}
 		}
-		if (volume < 1) throw "Volume too low";
+    if (volume < 1) throw "Volume too low";
+    if (volume > 5) throw "Are you fuckin' kidding ?";
 		return [message, [volume]];
   })
 	public async action(message: Message, [volume]: [number]): Promise<any> {
