@@ -13,7 +13,7 @@ export class YouTube {
 	}
 
 	public async getVideo(id: string): Promise<MusicVideo> {
-		const res: snekfetch.Result = await this._get({
+		const res: any = await this._get({
 			endpoint: "videos",
 			qs: {
 				part: "contentDetails,snippet",
@@ -26,7 +26,7 @@ export class YouTube {
 	}
 
 	public async getPlaylist(id: string): Promise<MusicVideo[]> {
-		const res: snekfetch.Result = await this._get({
+		const res: any = await this._get({
 			endpoint: "playlistItems",
 			qs: {
 				part: "snippet",
@@ -46,7 +46,7 @@ export class YouTube {
 	}
 
 	public async searchVideo(search: string): Promise<MusicVideo> {
-		const res: snekfetch.Result = await this._get({
+		const res: any = await this._get({
 			endpoint: "search",
 			qs: {
 				maxResults: "1",
@@ -78,7 +78,7 @@ export class YouTube {
 		return Promise.reject("xD");
 	}
 
-	private _get(query: QueryObject): Promise<snekfetch.Result> {
+	private _get(query: QueryObject): Promise<any> {
 		let url: string = `${YouTube.BASE}/${query.endpoint}?`;
 		let keys: string[] = Object.keys(query.qs);
 		for (const key of keys) {

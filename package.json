@@ -1,6 +1,6 @@
 {
   "name": "blue-discord",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "Blue bot for discord",
   "main": "index.js",
   "engines": {
@@ -15,23 +15,23 @@
   },
   "dependencies": {
     "@types/cheerio": "^0.22.7",
-    "@types/dotenv-safe": "^4.0.1",
-    "@types/node": "^9.4.6",
+    "@types/dotenv-safe": "^5.0.3",
+    "@types/node": "^12.0.8",
     "@types/request": "^2.47.0",
-    "@types/snekfetch": "^3.1.0",
+    "@types/snekfetch": "^4.0.2",
     "cheerio": "^1.0.0-rc.2",
     "discord.js": "^11.3.0",
-    "dotenv-safe": "^5.0.1",
-    "ffmpeg-binaries": "^3.2.2-3",
-    "node-opus": "^0.2.7",
+    "dotenv-safe": "^6.1.0",
+    "ffmpeg-binaries": "^4.0.0",
+    "node-opus": "^0.3.2",
     "rimraf": "^2.6.2",
     "snekfetch": "^4.0.0-beta.0",
-    "typescript": "^2.7.2",
+    "typescript": "^3.5.1",
     "yamdbf": "^3.0.1",
-    "ytdl-core": "^0.20.2"
+    "ytdl-core": "^0.29.2"
   },
   "devDependencies": {
     "nodemon": "^1.17.1",
-    "ts-node": "^5.0.1"
+    "ts-node": "^8.2.0"
   }
 }
