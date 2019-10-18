@@ -3,10 +3,6 @@
   "version": "1.0.7",
   "description": "Blue bot for discord",
   "main": "index.js",
-  "engines": {
-    "node": "9.x",
-    "npm": "*"
-  },
   "scripts": {
     "watch": "rimraf dist && tsc -p . -w",
     "dev": "nodemon --inspect --watch dist/ -d 1 ./dist",

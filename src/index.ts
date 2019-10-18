@@ -7,5 +7,5 @@ const bot = new Bot();
 bot.start();
 bot.on('disconnect', (): void => process.exit(0));
 (process as NodeJS.EventEmitter).on('unhandledRejection', (reason: string): void => {
-    console.error(reason);
+  console.error(reason);
 });

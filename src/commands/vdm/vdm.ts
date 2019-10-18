@@ -1,4 +1,4 @@
-import { Command, Message, Time } from 'yamdbf';
+import { Command, Message, Time } from '@yamdbf/core';
 import { RichEmbed, Guild } from 'discord.js';
 import * as cheerio from 'cheerio';
 import * as snekfetch from "snekfetch";
