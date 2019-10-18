@@ -1,5 +1,5 @@
 import * as path from 'path';
-import { Client, LogLevel, Logger, ListenerUtil } from 'yamdbf';
+import { Client, LogLevel, Logger, ListenerUtil } from '@yamdbf/core';
 
 import { MusicPlayer } from "./structures/music/MusicPlayer";
 
@@ -23,7 +23,7 @@ export class Bot extends Client {
 
   public constructor() {
     super({
-      owner: ['232940788785348609','138403669170323456'],
+      owner: ['232940788785348609', '138403669170323456'],
       token: DISCORD_TOKEN,
       unknownCommandError: true,
       statusText: 'Optimal.',
@@ -34,18 +34,18 @@ export class Bot extends Client {
       logLevel: LogLevel.DEBUG,
       pause: true,
       disableBase: [
-				"setlang",
-				"disablegroup",
-				"enablegroup",
-				"ping",
-				"listgroups",
-				"reload"
-			]
+        "setlang",
+        "disablegroup",
+        "enablegroup",
+        "ping",
+        "listgroups",
+        "reload"
+      ]
     });
-    
+
     this.keys = {
       google: process.env.GOOGLE_API_KEY
-		};
+    };
     this.music = new MusicPlayer(this);
     this.embedCode = embedCode;
   }

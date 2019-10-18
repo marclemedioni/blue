@@ -51,6 +51,17 @@
   version "2.3.2"
   resolved "https://registry.yarnpkg.com/@types/tough-cookie/-/tough-cookie-2.3.2.tgz#e0d481d8bb282ad8a8c9e100ceb72c995fb5e709"
 
+"@yamdbf/core@^3.0.2":
+  version "3.0.2"
+  resolved "https://registry.yarnpkg.com/@yamdbf/core/-/core-3.0.2.tgz#4860d3bb1eb978dbc79ad70b566402e247f2db75"
+  integrity sha512-9UcU+7U1pXwjaF6DHmctS9x4MFcl5DCEriCFCyLVrTo2e0O32DBYGFklznRPjdbIlKe6OGLn6a23YEnzYwsMaA==
+  dependencies:
+    discord.js "github:zajrik/discord.js#11.1-dev"
+    glob "7.1.1"
+    node-json-db "0.7.3"
+    reflect-metadata "^0.1.10"
+    source-map-support "^0.4.15"
+
 abbrev@1:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/abbrev/-/abbrev-1.1.1.tgz#f8f2c887ad10bf67f634f005b6987fed3179aac8"
@@ -141,8 +152,9 @@ async-each@^1.0.0:
   resolved "https://registry.yarnpkg.com/async-each/-/async-each-1.0.1.tgz#19d386a1d9edc6e7c1c85d388aedbcc56d33602d"
 
 async-limiter@~1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/async-limiter/-/async-limiter-1.0.0.tgz#78faed8c3d074ab81f22b4e985d79e8738f720f8"
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/async-limiter/-/async-limiter-1.0.1.tgz#dd379e94f0db8310b08291f9d64c3209766617fd"
+  integrity sha512-csOlWGAcRFJaI6m+F2WKdnMKr4HhdhFVBk0H/QbJFMCr+uO2kwohwXQPxw/9OCxp05r5ghVBFSyioixx3gfkNQ==
 
 asynckit@^0.4.0:
   version "0.4.0"
@@ -494,15 +506,16 @@ diff@^3.1.0:
   version "3.4.0"
   resolved "https://registry.yarnpkg.com/diff/-/diff-3.4.0.tgz#b1d85507daf3964828de54b37d0d73ba67dda56c"
 
-discord.js@^11.3.0:
-  version "11.3.0"
-  resolved "https://registry.yarnpkg.com/discord.js/-/discord.js-11.3.0.tgz#0d3e2ae12846e4e002bdbdfe3cb265e2bf24bf32"
+discord.js@^11.5.1:
+  version "11.5.1"
+  resolved "https://registry.yarnpkg.com/discord.js/-/discord.js-11.5.1.tgz#910fb9f6410328581093e044cafb661783a4d9e8"
+  integrity sha512-tGhV5xaZXE3Z+4uXJb3hYM6gQ1NmnSxp9PClcsSAYFVRzH6AJH74040mO3afPDMWEAlj8XsoPXXTJHTxesqcGw==
   dependencies:
-    long "^3.2.0"
-    prism-media "^0.0.1"
-    snekfetch "^3.6.1"
+    long "^4.0.0"
+    prism-media "^0.0.3"
+    snekfetch "^3.6.4"
     tweetnacl "^1.0.0"
-    ws "^4.0.0"
+    ws "^6.0.0"
 
 "discord.js@github:zajrik/discord.js#11.1-dev":
   version "11.2.0"
@@ -780,6 +793,7 @@ glob-parent@^3.1.0:
 glob@7.1.1:
   version "7.1.1"
   resolved "https://registry.yarnpkg.com/glob/-/glob-7.1.1.tgz#805211df04faaf1c63a3600306cdf5ade50b2ec8"
+  integrity sha1-gFIR3wT6rxxjo2ADBs31reULLsg=
   dependencies:
     fs.realpath "^1.0.0"
     inflight "^1.0.4"
@@ -1175,6 +1189,12 @@ lodash@^4.15.0:
 long@^3.2.0:
   version "3.2.0"
   resolved "https://registry.yarnpkg.com/long/-/long-3.2.0.tgz#d821b7138ca1cb581c172990ef14db200b5c474b"
+  integrity sha1-2CG3E4yhy1gcFymQ7xTbIAtcR0s=
+
+long@^4.0.0:
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/long/-/long-4.0.0.tgz#9a7b71cfb7d361a194ea555241c92f7468d5bf28"
+  integrity sha512-XsP+KhQif4bjX1kbuSiySJFNAehNxgLb6hPRGJ9QsUr8ajHkuXGdrHmFUTUUXhDwVX2R5bY4JNZEwbUiMhV+MA==
 
 lowercase-keys@^1.0.0:
   version "1.0.0"
@@ -1316,6 +1336,7 @@ nanomatch@^1.2.9:
 node-json-db@0.7.3:
   version "0.7.3"
   resolved "https://registry.yarnpkg.com/node-json-db/-/node-json-db-0.7.3.tgz#bf631ff4d4cf4211cbdffe6cae6aaafe6ee54cdf"
+  integrity sha1-v2Mf9NTPQhHL3/5srmqq/m7lTN8=
   dependencies:
     mkdirp "0.5.x"
 
@@ -1516,10 +1537,6 @@ posix-character-classes@^0.1.0:
   version "0.1.1"
   resolved "https://registry.yarnpkg.com/posix-character-classes/-/posix-character-classes-0.1.1.tgz#01eac0fe3b5af71a2a6c02feabb8c1fef7e00eab"
 
-postinstall-build@^5.0.1:
-  version "5.0.1"
-  resolved "https://registry.yarnpkg.com/postinstall-build/-/postinstall-build-5.0.1.tgz#b917a9079b26178d9a24af5a5cd8cb4a991d11b9"
-
 prepend-http@^1.0.1:
   version "1.0.4"
   resolved "https://registry.yarnpkg.com/prepend-http/-/prepend-http-1.0.4.tgz#d4f4562b0ce3696e41ac52d0e002e57a635dc6dc"
@@ -1527,6 +1544,12 @@ prepend-http@^1.0.1:
 prism-media@^0.0.1:
   version "0.0.1"
   resolved "https://registry.yarnpkg.com/prism-media/-/prism-media-0.0.1.tgz#a3425c9cabd50d1c6c02e543941a11895667bd10"
+  integrity sha1-o0JcnKvVDRxsAuVDlBoRiVZnvRA=
+
+prism-media@^0.0.3:
+  version "0.0.3"
+  resolved "https://registry.yarnpkg.com/prism-media/-/prism-media-0.0.3.tgz#8842d4fae804f099d3b48a9a38e3c2bab6f4855b"
+  integrity sha512-c9KkNifSMU/iXT8FFTaBwBMr+rdVcN+H/uNv1o+CuFeTThNZNTOrQ+RgXA1yL/DeLk098duAeRPP3QNPNbhxYQ==
 
 process-nextick-args@~2.0.0:
   version "2.0.0"
@@ -1606,8 +1629,9 @@ ref@1:
     nan "2"
 
 reflect-metadata@^0.1.10:
-  version "0.1.12"
-  resolved "https://registry.yarnpkg.com/reflect-metadata/-/reflect-metadata-0.1.12.tgz#311bf0c6b63cd782f228a81abe146a2bfa9c56f2"
+  version "0.1.13"
+  resolved "https://registry.yarnpkg.com/reflect-metadata/-/reflect-metadata-0.1.13.tgz#67ae3ca57c972a2aa1642b10fe363fe32d49dc08"
+  integrity sha512-Ts1Y/anZELhSsjMcU605fU9RE4Oi3p5ORujwbIKXfWa+0Zxs510Qrmrce5/Jowq3cHSZSJqBjypxmHarc+vEWg==
 
 regex-not@^1.0.0, regex-not@^1.0.2:
   version "1.0.2"
@@ -1779,9 +1803,10 @@ snapdragon@^0.8.1:
     source-map-resolve "^0.5.0"
     use "^2.0.0"
 
-snekfetch@^3.2.0, snekfetch@^3.6.1:
+snekfetch@^3.2.0, snekfetch@^3.6.4:
   version "3.6.4"
   resolved "https://registry.yarnpkg.com/snekfetch/-/snekfetch-3.6.4.tgz#d13e80a616d892f3d38daae4289f4d258a645120"
+  integrity sha512-NjxjITIj04Ffqid5lqr7XdgwM7X61c/Dns073Ly170bPQHLm6jkmelye/eglS++1nfTWktpP6Y2bFXjdPlQqdw==
 
 snekfetch@^4.0.0-beta.0:
   version "4.0.0-beta.0"
@@ -1806,6 +1831,7 @@ source-map-resolve@^0.5.0:
 source-map-support@^0.4.15:
   version "0.4.18"
   resolved "https://registry.yarnpkg.com/source-map-support/-/source-map-support-0.4.18.tgz#0286a6de8be42641338594e97ccea75f0a2c585f"
+  integrity sha512-try0/JqxPLF9nOjvSta7tVondkP5dwgyLDjVoyMDlmjugT2lRZ1OfsrYTkCd2hkDnJTKRbO/Rl3orm8vlsUzbA==
   dependencies:
     source-map "^0.5.6"
 
@@ -2035,8 +2061,9 @@ tweetnacl@^0.14.3, tweetnacl@~0.14.0:
   resolved "https://registry.yarnpkg.com/tweetnacl/-/tweetnacl-0.14.5.tgz#5ae68177f192d4456269d108afa93ff8743f4f64"
 
 tweetnacl@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/tweetnacl/-/tweetnacl-1.0.0.tgz#713d8b818da42068740bf68386d0479e66fc8a7b"
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/tweetnacl/-/tweetnacl-1.0.1.tgz#2594d42da73cd036bd0d2a54683dd35a6b55ca17"
+  integrity sha512-kcoMoKTPYnoeS50tzoqjPY3Uv9axeuuFAZY9M/9zFnhoVvRfxz9K29IMPD7jGmt2c8SW7i3gT9WqDl2+nV7p4A==
 
 typescript@^2.7.2:
   version "2.7.2"
@@ -2049,6 +2076,7 @@ uid-number@^0.0.6:
 ultron@~1.1.0:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/ultron/-/ultron-1.1.1.tgz#9fe1536a10a664a65266a1e3ccf85fd36302bc9c"
+  integrity sha512-UIEXBNeYmKptWH6z8ZnqTeS8fV74zG0/eRU9VGkpzz+LIJNs8W/zM/L+7ctCkRrgbNnnR0xxw4bKOr0cW0N0Og==
 
 undefsafe@^2.0.2:
   version "2.0.2"
@@ -2167,17 +2195,18 @@ write-file-atomic@^2.0.0:
 ws@^3.0.0:
   version "3.3.3"
   resolved "https://registry.yarnpkg.com/ws/-/ws-3.3.3.tgz#f1cf84fe2d5e901ebce94efaece785f187a228f2"
+  integrity sha512-nnWLa/NwZSt4KQJu51MYlCcSQ5g7INpOrOMt4XV8j4dqTXdmlUmSHQ8/oLC069ckre0fRsgfvsKwbTdtKLCDkA==
   dependencies:
     async-limiter "~1.0.0"
     safe-buffer "~5.1.0"
     ultron "~1.1.0"
 
-ws@^4.0.0:
-  version "4.1.0"
-  resolved "https://registry.yarnpkg.com/ws/-/ws-4.1.0.tgz#a979b5d7d4da68bf54efe0408967c324869a7289"
+ws@^6.0.0:
+  version "6.2.1"
+  resolved "https://registry.yarnpkg.com/ws/-/ws-6.2.1.tgz#442fdf0a47ed64f59b6a5d8ff130f4748ed524fb"
+  integrity sha512-GIyAXC2cB7LjvpgMt9EKS2ldqr0MTrORaleiOno6TweZ6r3TKtoFQWay/2PceJ3RuBasOHzXNn5Lrw1X0bEjqA==
   dependencies:
     async-limiter "~1.0.0"
-    safe-buffer "~5.1.0"
 
 xdg-basedir@^3.0.0:
   version "3.0.0"
@@ -2186,17 +2215,6 @@ xdg-basedir@^3.0.0:
 yallist@^2.1.2:
   version "2.1.2"
   resolved "https://registry.yarnpkg.com/yallist/-/yallist-2.1.2.tgz#1c11f9218f076089a47dd512f93c6699a6a81d52"
-
-yamdbf@^3.0.1:
-  version "3.0.1"
-  resolved "https://registry.yarnpkg.com/yamdbf/-/yamdbf-3.0.1.tgz#b5f411d702e39605b5b2ca08033de94ea4ebeb91"
-  dependencies:
-    discord.js "github:zajrik/discord.js#11.1-dev"
-    glob "7.1.1"
-    node-json-db "0.7.3"
-    postinstall-build "^5.0.1"
-    reflect-metadata "^0.1.10"
-    source-map-support "^0.4.15"
 
 yn@^2.0.0:
   version "2.0.0"
