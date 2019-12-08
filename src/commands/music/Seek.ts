@@ -1,6 +1,6 @@
 import { Command, Message, CommandDecorators, Middleware } from "@yamdbf/core";
 import { Queue } from "../../structures/music/discord/Queue";
-import { Bot } from '../../bot'
+import { Bot } from "../../bot";
 import { MusicVideo } from "../../structures/music/youtube/MusicVideo";
 import { validate } from "../../util/decorators/validate";
 
@@ -24,7 +24,9 @@ export class SeekCommand extends Command<Bot> {
   @using(resolve({ "<time>": "String" }))
   @using(expect({ "<time>": "String" }))
   public async action(message: Message, [time]: [string]): Promise<any> {
-    const queue: Queue | undefined = this.client.music.queues.get(message.guild.id);
+    const queue: Queue | undefined = this.client.music.queues.get(
+      message.guild.id
+    );
 
     if (!queue) {
       return;
@@ -33,26 +35,38 @@ export class SeekCommand extends Command<Bot> {
     const video: MusicVideo = queue.videos[0];
 
     let duration: number = 0;
-    if (/^\d+(?:\.\d+)?(?:s(?:ecs?)?|m(?:ins?)?|h(?:rs?|ours?)?|d(?:ays?)?)$/.test(time)) {
-      const match: RegExpMatchArray | null = time.match(/^(\d+(?:\.\d+)?)(s|m|h|d)/);
+    if (
+      /^\d+(?:\.\d+)?(?:s(?:ecs?)?|m(?:ins?)?|h(?:rs?|ours?)?|d(?:ays?)?)$/.test(
+        time
+      )
+    ) {
+      const match: RegExpMatchArray | null = time.match(
+        /^(\d+(?:\.\d+)?)(s|m|h|d)/
+      );
 
       if (match) {
         duration = parseFloat(match[1]);
-        duration = match[2] === "s"
-          ? duration : match[2] === "m"
-            ? duration * 60 : match[2] === "h"
-              ? duration * 60 * 60 : match[2] === "d"
-                ? duration * 60 * 60 * 24 : 0;
+        duration =
+          match[2] === "s"
+            ? duration
+            : match[2] === "m"
+            ? duration * 60
+            : match[2] === "h"
+            ? duration * 60 * 60
+            : match[2] === "d"
+            ? duration * 60 * 60 * 24
+            : 0;
       }
     } else if (!isNaN(parseFloat(time))) {
       duration = parseFloat(time);
     }
 
-    if (duration > video.duration) return message.channel.send("It doesn't go for that long.");
+    if (duration > video.duration)
+      return message.channel.send("It doesn't go for that long.");
 
     try {
       video.start = duration;
-      queue.dispatcher.end("seek");
+      queue!.dispatcher!.end("seek");
     } catch (err) {
       return message.channel.send("Something went wrong!");
     }

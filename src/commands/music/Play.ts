@@ -1,7 +1,7 @@
 import { Command, CommandDecorators, Middleware, Message } from "@yamdbf/core";
 import { VoiceChannel, TextChannel } from "discord.js";
 import { Queue } from "../../structures/music/discord/Queue";
-import { Bot } from '../../bot'
+import { Bot } from "../../bot";
 import { MusicPlayer } from "../../structures/music/MusicPlayer";
 import { MusicVideo } from "../../structures/music/youtube/MusicVideo";
 
@@ -17,13 +17,8 @@ export class PlayCommand extends Command<Bot> {
       usage: "<prefix>play <...query>",
       group: "music",
       guildOnly: true,
-      callerPermissions: [
-        "CONNECT"
-      ],
-      clientPermissions: [
-        "CONNECT",
-        "SPEAK"
-      ]
+      callerPermissions: ["CONNECT"],
+      clientPermissions: ["CONNECT", "SPEAK"]
     });
   }
 
@@ -34,7 +29,7 @@ export class PlayCommand extends Command<Bot> {
 
     let queue: Queue | undefined = music.queues.get(message.guild.id);
     if (!queue) {
-      const voice: VoiceChannel = message.member.voice.channel;
+      const voice: VoiceChannel = message.member.voiceChannel;
       if (!voice) {
         return message.channel.send("You must be in a voice channel.");
       } else if (voice.members.size === voice.userLimit) {
@@ -49,14 +44,18 @@ export class PlayCommand extends Command<Bot> {
     }
 
     const videos: MusicVideo[] = [];
-    const status: Message = await message.channel.send("Searching...") as Message;
+    const status: Message = (await message.channel.send(
+      "Searching..."
+    )) as Message;
     try {
       const received: MusicVideo[] = await music.api.youtube.get(query);
       videos.push(...received);
       if (videos.length > 1) {
         status.edit(`Added ${videos.length} videos to the queue.`);
       } else {
-        status.edit(`Added **${videos[0].title}** (${videos[0].length}) to the queue.`);
+        status.edit(
+          `Added **${videos[0].title}** (${videos[0].length}) to the queue.`
+        );
       }
     } catch (err) {
       return status.edit(`I couldn't that find video!`);

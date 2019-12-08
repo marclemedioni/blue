@@ -48,7 +48,7 @@ export class Queue {
   }
 
   public get connection(): VoiceConnection | null {
-    return this.guild.voice && this.guild.voice.connection;
+    return this.guild.voiceConnection;
   }
 
   public get dispatcher(): StreamDispatcher | null {

@@ -1,6 +1,12 @@
-import { Command, Message, CommandDecorators, Middleware, MiddlewareFunction } from "@yamdbf/core";
+import {
+  Command,
+  Message,
+  CommandDecorators,
+  Middleware,
+  MiddlewareFunction
+} from "@yamdbf/core";
 import { Queue } from "../../structures/music/discord/Queue";
-import { Bot } from '../../bot'
+import { Bot } from "../../bot";
 import { MusicVideo } from "../../structures/music/youtube/MusicVideo";
 import { validate } from "../../util/decorators/validate";
 
@@ -22,14 +28,16 @@ export class VolumeCommand extends Command<Bot> {
   @validate
   @using(resolve({ "<number|+|-|=|earrape>": "String" }))
   @using(expect({ "<number|+|-|=|earrape>": "String" }))
-  @using(function (this: Command<Bot>, message: Message, [input]: string[]) {
-    let queue: Queue | undefined = this.client.music.queues.get(message.guild.id);
+  @using(function(this: Command<Bot>, message: Message, [input]: string[]) {
+    let queue: Queue | undefined = this.client.music.queues.get(
+      message.guild.id
+    );
 
     if (!queue) {
       return [message, []];
     }
 
-    let current: number = queue.dispatcher.volume;
+    let current: number = queue!.dispatcher!.volume;
     let volume: number = parseInt(input);
     if (isNaN(volume)) {
       if (["+", "up"].includes(input)) {
@@ -45,15 +53,17 @@ export class VolumeCommand extends Command<Bot> {
     return [message, [volume]];
   })
   public async action(message: Message, [volume]: [number]): Promise<any> {
-    const queue: Queue | undefined = this.client.music.queues.get(message.guild.id);
+    const queue: Queue | undefined = this.client.music.queues.get(
+      message.guild.id
+    );
 
     if (!queue) {
       return;
     }
 
     try {
-      queue.dispatcher.setVolumeLogarithmic(volume / 10);
-      queue.volume = queue.dispatcher.volume;
+      queue!.dispatcher!.setVolumeLogarithmic(volume / 10);
+      queue.volume = queue!.dispatcher!.volume;
     } catch (err) {
       return message.channel.send("Couldn't change the volume.");
     }

@@ -47,29 +47,36 @@ export class MusicPlayer {
     else if (emptyChannel) await queue.text.send("No one is listening!");
     try {
       this.queues.delete(queue.id);
-      await queue.connection.disconnect();
+      await queue!.connection!.disconnect();
     } catch (err) {
       this._logger.error("Music", err.message);
     }
 
-    this._logger.debug("MusicPlayer", "thing is still here: " + this.queues.get(queue.id));
+    this._logger.debug(
+      "MusicPlayer",
+      "thing is still here: " + this.queues.get(queue.id)
+    );
   }
 
   private async _play(queue: Queue): Promise<void> {
-    if (!queue || !queue.videos.length || queue.voice.members.size < 2) return await this.stop(queue);
+    if (!queue || !queue.videos.length || queue.voice.members.size < 2)
+      return await this.stop(queue);
 
     const video: MusicVideo = queue.videos[0];
-    const stream: Readable = await ytdl(video.url)
+    const stream: Readable = await ytdl(video.url);
     const options: StreamOptions = {
       passes: 1,
       seek: video.start,
       volume: queue.volume,
-      bitrate: 'auto',
-      type: 'opus'
+      bitrate: "auto"
     };
-    const dispatcher: StreamDispatcher = queue.connection.play(stream, options)
+    const dispatcher: StreamDispatcher = queue!
+      .connection!.playOpusStream(stream, options)
       .once("start", () => {
-        if (video.start === 0) queue.text.send(`:musical_note:  Now playing **${video.title}** (${video.length}).`);
+        if (video.start === 0)
+          queue.text.send(
+            `:musical_note:  Now playing **${video.title}** (${video.length}).`
+          );
       })
       .once("end", (reason: string) => {
         dispatcher.removeAllListeners();
@@ -81,7 +88,7 @@ export class MusicPlayer {
         }, 500);
       })
       .on("error", (err: Error) => {
-        console.log(err)
+        console.log(err);
         this._logger.error("MusicPlayer", `Dispatcher error: ${err.message}`);
       });
   }
