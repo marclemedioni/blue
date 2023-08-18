@@ -1,0 +1,4 @@
+config/db.sqlite
+node_modules
+.vscode
+build
